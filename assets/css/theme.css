@@ -1,0 +1,122 @@
+/* =====================================================================
+   ASG — light theme
+   html[data-theme="light"] swaps the tokens to warm paper and ink.
+   Media surfaces (photo cards, film, region panels) stay dark "islands"
+   so imagery and white type over photos keep their contrast.
+   ===================================================================== */
+html[data-theme="light"] {
+  --ink: #f6f2ea;
+  --ink-2: #eee8dc;
+  --ink-3: #e7dfcf;
+  --line: rgba(28,25,20,.12);
+  --line-2: rgba(28,25,20,.22);
+  --text: #1c1914;
+  --mute: rgba(28,25,20,.7);
+  --dim: rgba(28,25,20,.5);
+  --gold-hi: #a8740f;
+  --sand: #9c6a0e;
+  --grad: linear-gradient(100deg, #d27508 0%, #b8860b 50%, #8a7b62 100%);
+  color-scheme: light;
+}
+
+/* dark islands: re-declare the dark tokens locally */
+.sx, .rg, .film__frame, .lightbox, .bx--steel, .bx--asx, .bx--solar, .nw__ph {
+  --ink: #0b0c0f; --ink-2: #111318; --ink-3: #171a20;
+  --line: rgba(236,228,212,.12); --line-2: rgba(236,228,212,.22);
+  --text: #efe9de; --mute: rgba(239,233,222,.62); --dim: rgba(239,233,222,.4);
+  --gold-hi: #e3b65a; --sand: #f0d38f;
+  --grad: linear-gradient(100deg, #f39019 0%, #e3b65a 45%, #f0d38f 70%, #a8987f 100%);
+  color: var(--text);
+}
+
+/* shared, theme-neutral fixes */
+.btn--gold { background: linear-gradient(100deg, #f39019 0%, #e3b65a 45%, #f0d38f 70%, #a8987f 100%); background-size: 160% 100%; }
+.toast { background: var(--text); color: var(--ink); }
+.scroll-cue i::after { background: var(--text); }
+.chip.is-on { background: var(--text); color: var(--ink); border-color: var(--text); }
+.pmap__nav button:hover { background: var(--text); color: var(--ink); }
+.pin:hover .dot, .pin.is-on .dot { stroke: var(--text); }
+
+/* logos */
+.logo-light { display: none; }
+html[data-theme="light"] .logo-dark { display: none; }
+html[data-theme="light"] .logo-light { display: block; }
+
+/* toggle */
+.theme { width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--line-2); display: grid; place-items: center; transition: border-color .3s, background .3s; }
+.theme:hover { border-color: var(--gold-hi); background: rgba(227,182,90,.1); }
+.theme svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.theme .sun { display: none; }
+html[data-theme="light"] .theme .sun { display: block; }
+html[data-theme="light"] .theme .moon { display: none; }
+::view-transition-old(root), ::view-transition-new(root) { animation: none; mix-blend-mode: normal; }
+::view-transition-new(root) { z-index: 9999; }
+
+/* surfaces */
+html[data-theme="light"] .grain { opacity: .035; }
+html[data-theme="light"] .hdr.is-solid { background: rgba(246,242,234,.82); }
+html[data-theme="light"] .prog { background: rgba(255,255,255,.85); box-shadow: 0 8px 24px -12px rgba(0,0,0,.25); }
+html[data-theme="light"] .hero__bg {
+  background:
+    radial-gradient(55% 65% at 72% 46%, rgba(243,144,25,.16), transparent 62%),
+    radial-gradient(40% 50% at 80% 30%, rgba(201,150,42,.14), transparent 70%),
+    radial-gradient(90% 60% at 10% 100%, rgba(27,88,124,.08), transparent 60%),
+    var(--ink);
+}
+html[data-theme="light"] .hero__bg::after { background-image: radial-gradient(rgba(168,116,15,.22) 1px, transparent 1px); }
+html[data-theme="light"] .gm-r { filter: drop-shadow(0 22px 30px rgba(80,55,10,.18)); }
+html[data-theme="light"] .gm-core { background: radial-gradient(circle, rgba(243,144,25,.28) 0%, rgba(201,150,42,.1) 42%, transparent 70%); }
+html[data-theme="light"] .marq__item .o { -webkit-text-stroke: 1px rgba(28,25,20,.35); }
+html[data-theme="light"] .val, html[data-theme="light"] .souks, html[data-theme="light"] .ldr { background: rgba(255,255,255,.55); }
+html[data-theme="light"] .val:hover { background: #fff; }
+html[data-theme="light"] .sb i { background: rgba(28,25,20,.08); }
+html[data-theme="light"] .purpose__mark { opacity: .12; }
+
+/* photo-backed sections become light washes */
+html[data-theme="light"] .energy__bg img { opacity: .3; }
+html[data-theme="light"] .energy__bg::after { background: linear-gradient(180deg, var(--ink-2) 0%, rgba(246,242,234,.72) 35%, rgba(246,242,234,.86) 70%, var(--ink) 100%); }
+html[data-theme="light"] .grid-viz { background: rgba(255,255,255,.6); }
+html[data-theme="light"] .reach__bg img { opacity: .35; }
+html[data-theme="light"] .reach__bg::after { background: linear-gradient(180deg, var(--ink-2), rgba(246,242,234,.6) 40%, rgba(246,242,234,.75) 70%, var(--ink)); }
+html[data-theme="light"] .off { background: rgba(255,255,255,.72); }
+html[data-theme="light"] .off--hq { background: linear-gradient(160deg, rgba(227,182,90,.35), rgba(255,255,255,.8)); border-color: rgba(168,116,15,.45); }
+html[data-theme="light"] .off__badge { color: #fff; }
+html[data-theme="light"] .contact__bg img { opacity: .45; }
+html[data-theme="light"] .contact__bg::after { background: linear-gradient(180deg, var(--ink) 0%, rgba(246,242,234,.6) 35%, rgba(246,242,234,.9) 100%); }
+html[data-theme="light"] .form { background: rgba(255,255,255,.78); }
+html[data-theme="light"] .form input, html[data-theme="light"] .form select, html[data-theme="light"] .form textarea { background: rgba(255,255,255,.85); }
+html[data-theme="light"] .form input:focus, html[data-theme="light"] .form select:focus, html[data-theme="light"] .form textarea:focus { background: #fff; }
+html[data-theme="light"] .form select option { background: #fff; }
+html[data-theme="light"] .hosp__media::after {
+  background: linear-gradient(180deg, rgba(246,242,234,.55) 0%, rgba(246,242,234,0) 30%, rgba(246,242,234,.15) 60%, var(--ink) 100%),
+    linear-gradient(90deg, rgba(246,242,234,.95) 0%, rgba(246,242,234,.72) 40%, transparent 72%);
+}
+html[data-theme="light"][dir="rtl"] .hosp__media::after {
+  background: linear-gradient(180deg, rgba(246,242,234,.55) 0%, rgba(246,242,234,0) 30%, rgba(246,242,234,.15) 60%, var(--ink) 100%),
+    linear-gradient(-90deg, rgba(246,242,234,.95) 0%, rgba(246,242,234,.72) 40%, transparent 72%);
+}
+html[data-theme="light"] .hosp__intro .lead { color: var(--mute); }
+html[data-theme="light"] .timeline { background: rgba(255,255,255,.78); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255,255,255,.6); border-radius: 22px; padding-block: 28px 4px; padding-inline: 52px 28px; box-shadow: 0 30px 60px -30px rgba(40,28,8,.35); }
+html[data-theme="light"] .timeline::before { inset-inline-start: 26px; top: 36px; bottom: 36px; }
+html[data-theme="light"] .timeline li::before { inset-inline-start: -30px; background: #fff; }
+html[data-theme="light"] .pmap__svg { background: radial-gradient(80% 70% at 50% 50%, rgba(27,88,124,.07), transparent 70%), #fff; }
+html[data-theme="light"] .pmap__svg .land { fill: rgba(28,25,20,.04); stroke: rgba(28,25,20,.18); }
+html[data-theme="light"] .pmap__svg .ksa { fill: rgba(201,150,42,.12); stroke: #b8860b; }
+html[data-theme="light"] .pmap__svg .grat { stroke: rgba(28,25,20,.06); }
+html[data-theme="light"] .pmap__svg .lbl { fill: rgba(28,25,20,.45); }
+html[data-theme="light"] .pmap__svg .link { stroke: #d27508; opacity: .6; }
+html[data-theme="light"] .pmap__card { background: #fff; }
+html[data-theme="light"] .partners, html[data-theme="light"] .impact { background: var(--ink-2); }
+html[data-theme="light"] .ig--2 { border-color: var(--ink-2); }
+html[data-theme="light"] .nw { background: #fff; }
+html[data-theme="light"] .ftr { background: var(--ink-2); }
+html[data-theme="light"] .ftr__giant { background: linear-gradient(180deg, rgba(168,116,15,.22), rgba(168,116,15,0) 85%); -webkit-background-clip: text; background-clip: text; }
+html[data-theme="light"] .menu-open .menu__mark { opacity: .2; }
+html[data-theme="light"] .bx--meter { background: radial-gradient(80% 60% at 50% 30%, rgba(243,144,25,.14), transparent 70%), #fff; }
+html[data-theme="light"] .bx--sama { background: radial-gradient(70% 80% at 80% 20%, rgba(95,165,82,.18), transparent 70%), #fff; }
+html[data-theme="light"] .bx__cycle { stroke: #4e8542; }
+html[data-theme="light"] .ex__ph { background: radial-gradient(120% 90% at 50% 10%, #fffdf8, #e6dcc8); }
+html[data-theme="light"] .lines__list li:hover { background: linear-gradient(90deg, rgba(243,144,25,.1), transparent); }
+@media (max-width: 900px) { html[data-theme="light"] .hero__globe { opacity: .32; } }
+html[data-theme="light"] .loader__mark img { filter: drop-shadow(0 10px 30px rgba(168,116,15,.25)); }
